@@ -1,42 +1,15 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "build": {
-    "env": {
-      "MY_ENV_VAR": "my-value"
-    },
-    "buildCommand": "npm run build",
-    "outputDirectory": "dist"
-  },
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api"
-    },
-    {
-      "src": "/old-path",
-      "status": 301,
-      "headers": {
-        "Location": "/new-path"
-      }
-    },
-    {
-      "src": "/static/(.*)",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
+      "src": "/(.*)",
+      "dest": "src/index.js"
     }
-  ],
-  "crons": [
-    {
-      "path": "/api/cron-job",
-      "schedule": "0 0 * * *"
-    }
-  ],
-  "functions": {
-    "api/my-function.js": {
-      "memory": 1024,
-      "maxDuration": 60
-    }
-  }
+  ]
 }
