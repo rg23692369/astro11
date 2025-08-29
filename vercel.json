@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "name": "astrotalk-server",
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/index.js"
+    }
+  ],
+  "env": {
+    "MONGO_URI": "@mongo_uri",
+    "JWT_SECRET": "@jwt_secret",
+    "RAZORPAY_KEY_ID": "@razorpay_key_id",
+    "RAZORPAY_KEY_SECRET": "@razorpay_key_secret",
+    "RAZORPAY_WEBHOOK_SECRET": "@razorpay_webhook_secret",
+    "CLIENT_URL": "@client_url",
+    "USE_PIESOCKET": "@use_piesocket",
+    "WS_PIESOCKET_URL": "@ws_piesocket_url",
+    "WS_PIESOCKET_TOKEN": "@ws_piesocket_token",
+    "PIESOCKET_API_KEY": "@piesocket_api_key",
+    "PIESOCKET_NOTIFY_SELF": "@piesocket_notify_self",
+    "TURN_DOMAIN": "@turn_domain",
+    "TURN_PORT_TLS": "@turn_port_tls",
+    "TURN_STATIC_AUTH_SECRET": "@turn_static_auth_secret",
+    "STUN_URL": "@stun_url",
+    "TURN_TLS": "@turn_tls",
+    "AUTH0_DOMAIN": "@auth0_domain"
+  }
+}
