@@ -1,5 +1,4 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "builds": [
     {
@@ -14,11 +13,11 @@
     }
   ],
   "env": {
-    "MONGO_URI": "@mongo_uri",
-    "JWT_SECRET": "@jwt_secret",
-    "RAZORPAY_KEY_ID": "@razorpay_key_id",
-    "RAZORPAY_KEY_SECRET": "@razorpay_key_secret",
-    "CLIENT_URL": "@client_url"
+    "MONGO_URI": "your-mongo-uri-here",
+    "JWT_SECRET": "your-jwt-secret-here",
+    "RAZORPAY_KEY_ID": "your-razorpay-key-id-here",
+    "RAZORPAY_KEY_SECRET": "your-razorpay-key-secret-here",
+    "CLIENT_URL": "http://localhost:5173"
   },
   "functions": {
     "src/index.js": {
