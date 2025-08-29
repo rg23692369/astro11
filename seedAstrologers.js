@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import bcrypt from "bcryptjs";
 import User from "./src/models/User.js";
 import AstrologerProfile from "./src/models/AstrologerProfile.js";
 
@@ -10,18 +11,20 @@ async function seed() {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log("✅ MongoDB connected");
 
-    // Create astrologer user accounts
+    const passwordHash = await bcrypt.hash("password123", 10);
+
+    // Create astrologer users
     const astro1 = await User.create({
       username: "rama1",
       email: "rama1@example.com",
-      password: "password123", // hash in production!
+      password: passwordHash,
       role: "astrologer",
     });
 
     const astro2 = await User.create({
       username: "sita2",
       email: "sita2@example.com",
-      password: "password123",
+      password: passwordHash,
       role: "astrologer",
     });
 
@@ -42,7 +45,7 @@ async function seed() {
         bio: "Specialist in Palmistry & Tarot Reading.",
         languages: ["English", "Bengali"],
         expertise: ["Tarot", "Palmistry"],
-        perMinuteRate: 0, // free astrologer like AI
+        perMinuteRate: 0,
         isOnline: true,
       },
     ]);
